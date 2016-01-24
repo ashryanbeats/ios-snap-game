@@ -10,3 +10,6 @@ A game where you get points by tapping when two randomly selected images match e
   - ~~Max possible score~~
   - ~~Number of misses~~
 - Don't switch images on the final second; instead, gray them out
+- Layout
+  - Portrait-only
+  - Add constraints
