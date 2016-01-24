@@ -11,10 +11,11 @@
 @interface ViewController : UIViewController {
     
     NSTimer *timer;
-    int timerInt;
-    
     NSTimer *imageUpdate;
+    
+    int timerInt;
     int scoreInt;
+    int pairInt;
     
 }
 
@@ -24,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startButtonOutlet;
 @property (weak, nonatomic) IBOutlet UIButton *snapButtonOutlet;
+@property (weak, nonatomic) IBOutlet UILabel *pairLabel;
 
 - (IBAction)startGame:(id)sender;
 - (IBAction)snapAction:(id)sender;

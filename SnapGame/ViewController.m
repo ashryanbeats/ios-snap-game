@@ -23,6 +23,8 @@
     
     self.snapButtonOutlet.enabled = NO;
     
+    self.pairLabel.hidden = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,7 +117,11 @@
             break;
     }
     
-    [self transitionImage:newImageOne :newImageTwo];
+    if ([newImageOne isEqual:newImageTwo]) {
+        pairInt++;
+    }
+    
+    [self transitionImages:newImageOne :newImageTwo];
     
     if (timerInt == 0) {
         [timer invalidate];
@@ -123,12 +129,15 @@
         self.snapButtonOutlet.enabled = NO;
         self.startButtonOutlet.enabled = YES;
         
+        self.pairLabel.text = [NSString stringWithFormat:@"There were %i pairs", pairInt];
+        self.pairLabel.hidden = NO;
+        
         [self.startButtonOutlet setTitle:@"Restart Game" forState:UIControlStateNormal];
     }
     
 }
 
-- (void)transitionImage:(UIImage *)imageOne :(UIImage *)imageTwo {
+- (void)transitionImages:(UIImage *)imageOne :(UIImage *)imageTwo {
     [UIView transitionWithView:self.imageView1
                       duration:0.1f
                        options:UIViewAnimationOptionTransitionFlipFromLeft
