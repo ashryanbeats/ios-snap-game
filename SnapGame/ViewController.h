@@ -16,6 +16,7 @@
     int timerInt;
     int scoreInt;
     int pairInt;
+    int missInt;
     
 }
 
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *startButtonOutlet;
 @property (weak, nonatomic) IBOutlet UIButton *snapButtonOutlet;
 @property (weak, nonatomic) IBOutlet UILabel *pairLabel;
+@property (weak, nonatomic) IBOutlet UILabel *missLabel;
 
 - (IBAction)startGame:(id)sender;
 - (IBAction)snapAction:(id)sender;

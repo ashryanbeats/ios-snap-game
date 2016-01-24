@@ -24,6 +24,7 @@
     self.snapButtonOutlet.enabled = NO;
     
     self.pairLabel.hidden = YES;
+    self.missLabel.hidden = YES;
     
 }
 
@@ -130,7 +131,10 @@
         self.startButtonOutlet.enabled = YES;
         
         self.pairLabel.text = [NSString stringWithFormat:@"There were %i pairs", pairInt];
+        self.missLabel.text = [NSString stringWithFormat:@"You guessed incorrectly %i times", missInt];
+        
         self.pairLabel.hidden = NO;
+        self.missLabel.hidden = NO;
         
         [self.startButtonOutlet setTitle:@"Restart Game" forState:UIControlStateNormal];
     }
@@ -158,10 +162,11 @@
 - (IBAction)snapAction:(id)sender {
     
     if ([self.imageView1.image isEqual:self.imageView2.image]) {
-        scoreInt += 1;
+        scoreInt++;
     }
     else {
-        scoreInt -= 1;
+        scoreInt--;
+        missInt++;
     }
     
     self.scoreLabel.text = [NSString stringWithFormat:@"%i", scoreInt];
