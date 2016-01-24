@@ -43,13 +43,20 @@
     }
     
     if (timerInt == 0) {
+        // Initialize variables
         timerInt = 20;
         scoreInt = 0;
+        pairInt = 0;
+        missInt = 0;
         
+        // Reset gameplay labels
         self.timeLabel.text = [NSString stringWithFormat:@"%i", timerInt];
         self.scoreLabel.text = [NSString stringWithFormat:@"%i", scoreInt];
-        
         [self.startButtonOutlet setTitle:@"Start Game" forState:UIControlStateNormal];
+        
+        // Hide results
+        self.pairLabel.hidden = YES;
+        self.missLabel.hidden = YES;
     }
     
 }
@@ -125,18 +132,8 @@
     [self transitionImages:newImageOne :newImageTwo];
     
     if (timerInt == 0) {
-        [timer invalidate];
         
-        self.snapButtonOutlet.enabled = NO;
-        self.startButtonOutlet.enabled = YES;
-        
-        self.pairLabel.text = [NSString stringWithFormat:@"There were %i pairs", pairInt];
-        self.missLabel.text = [NSString stringWithFormat:@"You guessed incorrectly %i times", missInt];
-        
-        self.pairLabel.hidden = NO;
-        self.missLabel.hidden = NO;
-        
-        [self.startButtonOutlet setTitle:@"Restart Game" forState:UIControlStateNormal];
+        [self endGame];
     }
     
 }
@@ -157,6 +154,24 @@
                         self.imageView2.image = imageTwo;
                     }
                     completion:nil];
+}
+
+- (void)endGame {
+    
+    [timer invalidate];
+    
+    self.snapButtonOutlet.enabled = NO;
+    self.startButtonOutlet.enabled = YES;
+    
+    self.pairLabel.text = [NSString stringWithFormat:@"There were %i pairs", pairInt];
+    self.missLabel.text = [NSString stringWithFormat:@"You guessed incorrectly %i times", missInt];
+    
+    self.pairLabel.hidden = NO;
+    self.missLabel.hidden = NO;
+    
+    [self.startButtonOutlet setTitle:@"Restart Game" forState:UIControlStateNormal];
+
+    
 }
 
 - (IBAction)snapAction:(id)sender {
