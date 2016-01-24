@@ -59,24 +59,25 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%i", timerInt];
     
     int RandomOne = arc4random() % 6;
+    UIImage *newImageOne;
     switch (RandomOne) {
         case 0:
-            self.imageView1.image = [UIImage imageNamed:@"Car1.jpg"];
+            newImageOne = [UIImage imageNamed:@"Car1.jpg"];
             break;
         case 1:
-            self.imageView1.image = [UIImage imageNamed:@"Car2.jpg"];
+            newImageOne = [UIImage imageNamed:@"Car2.jpg"];
             break;
         case 2:
-            self.imageView1.image = [UIImage imageNamed:@"Car3.jpg"];
+            newImageOne = [UIImage imageNamed:@"Car3.jpg"];
             break;
         case 3:
-            self.imageView1.image = [UIImage imageNamed:@"Car4.jpg"];
+            newImageOne = [UIImage imageNamed:@"Car4.jpg"];
             break;
         case 4:
-            self.imageView1.image = [UIImage imageNamed:@"Car5.jpg"];
+            newImageOne = [UIImage imageNamed:@"Car5.jpg"];
             break;
         case 5:
-            self.imageView1.image = [UIImage imageNamed:@"Car6.jpg"];
+            newImageOne = [UIImage imageNamed:@"Car6.jpg"];
             break;
             
         default:
@@ -84,30 +85,37 @@
     }
     
     int RandomTwo = arc4random() % 6;
+    UIImage *newImageTwo;
     switch (RandomTwo) {
         case 0:
-            self.imageView2.image = [UIImage imageNamed:@"Car1.jpg"];
+            newImageTwo = [UIImage imageNamed:@"Car1.jpg"];
             break;
+        
         case 1:
-            self.imageView2.image = [UIImage imageNamed:@"Car2.jpg"];
+            newImageTwo = [UIImage imageNamed:@"Car2.jpg"];
             break;
+            
         case 2:
-            self.imageView2.image = [UIImage imageNamed:@"Car3.jpg"];
+            newImageTwo = [UIImage imageNamed:@"Car3.jpg"];
             break;
+            
         case 3:
-            self.imageView2.image = [UIImage imageNamed:@"Car4.jpg"];
+            newImageTwo = [UIImage imageNamed:@"Car4.jpg"];
             break;
+            
         case 4:
-            self.imageView2.image = [UIImage imageNamed:@"Car5.jpg"];
+            newImageTwo = [UIImage imageNamed:@"Car5.jpg"];
             break;
+            
         case 5:
-            self.imageView2.image = [UIImage imageNamed:@"Car6.jpg"];
+            newImageTwo = [UIImage imageNamed:@"Car6.jpg"];
             break;
             
         default:
             break;
     }
     
+    [self transitionImage:newImageOne :newImageTwo];
     
     if (timerInt == 0) {
         [timer invalidate];
@@ -118,6 +126,24 @@
         [self.startButtonOutlet setTitle:@"Restart Game" forState:UIControlStateNormal];
     }
     
+}
+
+- (void)transitionImage:(UIImage *)imageOne :(UIImage *)imageTwo {
+    [UIView transitionWithView:self.imageView1
+                      duration:0.1f
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        self.imageView1.image = imageOne;
+                    }
+                    completion:nil];
+    
+    [UIView transitionWithView:self.imageView2
+                      duration:0.1f
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        self.imageView2.image = imageTwo;
+                    }
+                    completion:nil];
 }
 
 - (IBAction)snapAction:(id)sender {
