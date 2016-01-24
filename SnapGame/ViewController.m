@@ -43,22 +43,31 @@
     }
     
     if (timerInt == 0) {
-        // Initialize variables
-        timerInt = 20;
-        scoreInt = 0;
-        pairInt = 0;
-        missInt = 0;
         
-        // Reset gameplay labels
-        self.timeLabel.text = [NSString stringWithFormat:@"%i", timerInt];
-        self.scoreLabel.text = [NSString stringWithFormat:@"%i", scoreInt];
-        [self.startButtonOutlet setTitle:@"Start Game" forState:UIControlStateNormal];
+        [self initializeGameVariables];
+        [self resetGameplayLabels];
+        [self hideResults];
         
-        // Hide results
-        self.pairLabel.hidden = YES;
-        self.missLabel.hidden = YES;
     }
     
+}
+
+- (void)initializeGameVariables {
+    timerInt = 20;
+    scoreInt = 0;
+    pairInt = 0;
+    missInt = 0;
+}
+
+- (void)resetGameplayLabels {
+    self.timeLabel.text = [NSString stringWithFormat:@"%i", timerInt];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%i", scoreInt];
+    [self.startButtonOutlet setTitle:@"Start Game" forState:UIControlStateNormal];
+}
+
+- (void)hideResults {
+    self.pairLabel.hidden = YES;
+    self.missLabel.hidden = YES;
 }
 
 
