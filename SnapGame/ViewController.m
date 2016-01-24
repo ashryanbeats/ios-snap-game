@@ -18,13 +18,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    timerInt = 20;
-    scoreInt = 0;
+    [self initializeGameVariables];
     
     self.snapButtonOutlet.enabled = NO;
     
-    self.pairLabel.hidden = YES;
-    self.missLabel.hidden = YES;
+    [self hideResults];
     
 }
 
@@ -53,10 +51,12 @@
 }
 
 - (void)initializeGameVariables {
-    timerInt = 20;
+    startTimerInt = 20;
+    timerInt = startTimerInt;
     scoreInt = 0;
     pairInt = 0;
     missInt = 0;
+    correctOutcomeInt = 0;
 }
 
 - (void)resetGameplayLabels {
@@ -68,6 +68,7 @@
 - (void)hideResults {
     self.pairLabel.hidden = YES;
     self.missLabel.hidden = YES;
+    self.correctOutcomeLabel.hidden = YES;
 }
 
 
@@ -167,20 +168,29 @@
 
 - (void)endGame {
     
+    // Stop timer
     [timer invalidate];
     
+    // Toggle buttons
     self.snapButtonOutlet.enabled = NO;
     self.startButtonOutlet.enabled = YES;
     
+    // Calculate number of correct outcomes
+    correctOutcomeInt = startTimerInt - missInt;
+    
+    // Set results strings
     self.pairLabel.text = [NSString stringWithFormat:@"There were %i pairs", pairInt];
     self.missLabel.text = [NSString stringWithFormat:@"You guessed incorrectly %i times", missInt];
+    self.correctOutcomeLabel.text = [NSString stringWithFormat:@"Score: %i", correctOutcomeInt];
     
+    // Toggle results labels visibility
     self.pairLabel.hidden = NO;
     self.missLabel.hidden = NO;
+    self.correctOutcomeLabel.hidden = NO;
     
+    // Set start button string
     [self.startButtonOutlet setTitle:@"Restart Game" forState:UIControlStateNormal];
 
-    
 }
 
 - (IBAction)snapAction:(id)sender {

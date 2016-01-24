@@ -61,11 +61,18 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-jg-xNr">
+                                <rect key="frame" x="20" y="511" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="correctOutcomeLabel" destination="ZHx-jg-xNr" id="YIx-t7-WSJ"/>
                         <outlet property="imageView1" destination="GZM-eQ-UuH" id="iQb-9b-hVs"/>
                         <outlet property="imageView2" destination="UPC-E5-j5r" id="Pxf-gp-oep"/>
                         <outlet property="missLabel" destination="46l-N7-cb4" id="qL1-e2-vXt"/>

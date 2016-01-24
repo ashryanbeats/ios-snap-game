@@ -13,10 +13,12 @@
     NSTimer *timer;
     NSTimer *imageUpdate;
     
+    int startTimerInt;
     int timerInt;
     int scoreInt;
     int pairInt;
     int missInt;
+    int correctOutcomeInt;
     
 }
 
@@ -28,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *snapButtonOutlet;
 @property (weak, nonatomic) IBOutlet UILabel *pairLabel;
 @property (weak, nonatomic) IBOutlet UILabel *missLabel;
+@property (weak, nonatomic) IBOutlet UILabel *correctOutcomeLabel;
 
 - (IBAction)startGame:(id)sender;
 - (IBAction)snapAction:(id)sender;
